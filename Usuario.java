@@ -4,14 +4,20 @@ import javax.swing.JOptionPane;
 public class Usuario extends CriaVeiculo{
 	private String Nome;
 	private int Idade;
-		
+	private boolean User;
+	
 	public Usuario(String nome, int idade){
 		if(nome == ""){
-			setNome("Padrão");
+			setNome("PadrÃ£o");
 			setIdade(18);
-		}else{
+			setUser(true);
+		}else if(idade == 0){
 			setNome(nome);
+			setIdade(18);
+			setUser(true);
+		}else {
 			setIdade(idade);
+			setUser(false);
 		}
 	} 
 	
@@ -22,9 +28,13 @@ public class Usuario extends CriaVeiculo{
 		if(idade >= 18)
 			this.Idade =  idade;
 		else
-			//System.out.println("Você não possui 18 anos para poder dirigir");
-			JOptionPane.showMessageDialog(null, "Você não possui 18 anos para poder dirigir", null, JOptionPane.ERROR_MESSAGE);
+			//System.out.println("VocÃª nÃ£o possui 18 anos para poder dirigir");
+			JOptionPane.showMessageDialog(null, "Desculpe, mas vocÃª nÃ£o possui 18 anos para poder dirigir", null, JOptionPane.ERROR_MESSAGE);
 		
+	}
+	
+	private void setUser(boolean x) {
+		this.User = x;
 	}
 	
 	public String getNome(){
@@ -32,5 +42,8 @@ public class Usuario extends CriaVeiculo{
 	}
 	public int getIdade(){
 		return this.Idade;
+	}
+	public boolean getUser() {
+		return User;
 	}
 }
