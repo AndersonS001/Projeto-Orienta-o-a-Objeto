@@ -7,7 +7,7 @@ import javax.swing.*;
 /**
  * 
  * @author Anderson Aguiar de Souza 22216001-2
- * A classe veiculo molda um objeto carro de forma genÈrica.
+ * A classe veiculo molda um objeto carro de forma gen√©rica.
  */
 
 public class Veiculo { 
@@ -20,101 +20,116 @@ public class Veiculo {
 	
 	
 	/**
-	 * MÈtodo construtor da classe que inicia os atributos do carro como padrıes.
+	 * M√©todo construtor da classe que inicia os atributos do carro como padr√µes.
 	 */
 	public Veiculo(){ 
-		Cor = "Vermelho"; /** DefiniÁ„o padr„o de atributos*/
-		Ano = "2017"; /** DefiniÁ„o padr„o de atributos*/
-		Modelo = "Ferrari"; /** DefiniÁ„o padr„o de atributos*/
-		Tipo = "Passeio"; /** DefiniÁ„o padr„o de atributos*/
+		Cor = "Vermelho"; /** Defini√ß√£o padr√£o de atributos*/
+		Ano = "2017"; /** Defini√ß√£o padr√£o de atributos*/
+		Modelo = "Ferrari"; /** Defini√ß√£o padr√£o de atributos*/
+		Tipo = "Passeio"; /** Defini√ß√£o padr√£o de atributos*/
 	}
 	
-	/** MÈtodo p˙blico para ligar o carro */
+	/** M√©todo p√∫blico para ligar o carro 
+	 * 
+	 * @return boolean
+	 */
 	public boolean ligarCarro(){ 
-		if(!getCarroLigado()){/** Condicional para garantir que o carro n„o esteja ligado*/
-			//System.out.println("Ligando o carro"); /** Mensagem de sucesso na condiÁ„o*/
-			JOptionPane.showMessageDialog(null, "Ligando o carro"); /** Mensagem de sucesso na condiÁ„o*/
-			setCarroLigado(true); /** Passando a informaÁ„o para o mÈtodo set do carroLigado*/
-			setCarroAndando(false); /** Passando a informaÁ„o para o mÈtodo set do carroAndando*/
-			 return true; /**  Retorno de sucesso da funÁ„o*/
+		if(!getCarroLigado()){/** Condicional para garantir que o carro n√£o esteja ligado*/
+			//System.out.println("Ligando o carro"); /** Mensagem de sucesso na condi√ß√£o*/
+			JOptionPane.showMessageDialog(null, "Ligando o carro"); /** Mensagem de sucesso na condi√ß√£o*/
+			setCarroLigado(true); /** Passando a informa√ß√£o para o m√©todo set do carroLigado*/
+			setCarroAndando(false); /** Passando a informa√ß√£o para o m√©todo set do carroAndando*/
+			 return true; /**  Retorno de sucesso da fun√ß√£o*/
 		}
-		/** Se n„o*/
+		/** Se n√£o*/
 		else{
-			JOptionPane.showMessageDialog(null, "Seu carro ja est· ligado"); /** Mensagem de erro na condiÁ„o*/
-			//System.out.println("Seu carro ja est· ligado");
+			JOptionPane.showMessageDialog(null, "Seu carro ja est√° ligado"); /** Mensagem de erro na condi√ß√£o*/
+			//System.out.println("Seu carro ja est√° ligado");
 			}
-		return false; /** Retorno da funÁ„o*/
+		return false; /** Retorno da fun√ß√£o*/
 	}
 	
 	/** 
-	 * MÈtodo p˙blico para desligar o carro. 
+	 * M√©todo p√∫blico para desligar o carro. 
+	 * @return boolean
 	 */
 	public boolean desligarCarro(){
 		if(getCarroLigado()){/** Condicional para garantir que o carro esteja ligado*/
 			//System.out.println("Desligando o carro");
-			JOptionPane.showMessageDialog(null, "Desligando o carro");/** Mensagem de sucesso na condiÁ„o*/
-			setCarroLigado(false);/** Passando a informaÁ„o para o mÈtodo set do carroLigado*/
-			setCarroAndando(false); /** Passando a informaÁ„o para o mÈtodo set do carroAndando*/
-			return true;  /** @return Retorno de sucesso da funÁ„o*/
+			JOptionPane.showMessageDialog(null, "Desligando o carro");/** Mensagem de sucesso na condi√ß√£o*/
+			setCarroLigado(false);/** Passando a informa√ß√£o para o m√©todo set do carroLigado*/
+			setCarroAndando(false); /** Passando a informa√ß√£o para o m√©todo set do carroAndando*/
+			return true;  /** @return Retorno de sucesso da fun√ß√£o*/
 		}else{
-		//	System.out.println("Seu carro ja est· desligado");
-			JOptionPane.showMessageDialog(null, "Seu carro ja est· desligado"); /** Mensagem de erro na condiÁ„o*/
+		//	System.out.println("Seu carro ja est√° desligado");
+			JOptionPane.showMessageDialog(null, "Seu carro ja est√° desligado"); /** Mensagem de erro na condi√ß√£o*/
 			}
-		return false; /** Retorno da funÁ„o*/
+		return false; /** Retorno da fun√ß√£o*/
 	}
 	
-	/** MÈtodo p˙blico para o carro andar para frente*/
+	/** M√©todo p√∫blico para o carro andar para frente*/
 	public void andarFrente(){ 
 		if(getCarroLigado()){ /** Condicional para garantir que o carro esteja ligado*/
 			//System.out.println("Andando para frente");
-			JOptionPane.showMessageDialog(null, "Andando para frente");/** Mensagem de sucesso na condiÁ„o*/
-			setCarroAndando(true);/** Passando a informaÁ„o para o mÈtodo set do carroAndando*/
+			JOptionPane.showMessageDialog(null, "Andando para frente");/** Mensagem de sucesso na condi√ß√£o*/
+			setCarroAndando(true);/** Passando a informa√ß√£o para o m√©todo set do carroAndando*/
 		}
 	}
 	
-	/** MÈtodo p˙blico para rÈ*/
-	public void deRÈ(){ 
+	/** M√©todo p√∫blico para r√©*/
+	public void deR√©(){ 
 		if(getCarroLigado()){/** Condicional para garantir que o carro esteja ligado*/
-			//System.out.println("RÈ engatada");
-			JOptionPane.showMessageDialog(null, "RÈ engatada"); /** Mensagem de sucesso na condiÁ„o*/
-			setCarroAndando(true);/** Passando a informaÁ„o para o mÈtodo set do carroAndando*/
+			//System.out.println("R√© engatada");
+			JOptionPane.showMessageDialog(null, "R√© engatada"); /** Mensagem de sucesso na condi√ß√£o*/
+			setCarroAndando(true);/** Passando a informa√ß√£o para o m√©todo set do carroAndando*/
 		}	
 	}
 	
-	/** MÈtodo p˙blico para virar a direita*/
+	/** M√©todo p√∫blico para virar a direita*/
 	public void virarDireita(){ 
 		if(getCarroLigado()){/** Condicional para garantir que o carro esteja ligado*/
 			//System.out.println("Espero que sua seta esteja ligada, virando para direita");
-			JOptionPane.showMessageDialog(null, "Espero que sua seta esteja ligada, virando para direita");/** Mensagem de sucesso na condiÁ„o*/
-			setCarroAndando(true);/** Passando a informaÁ„o para o mÈtodo set do carroAndando*/
+			JOptionPane.showMessageDialog(null, "Espero que sua seta esteja ligada, virando para direita");/** Mensagem de sucesso na condi√ß√£o*/
+			setCarroAndando(true);/** Passando a informa√ß√£o para o m√©todo set do carroAndando*/
 		}
 	}
 	
-	/** MÈtodo p˙blico para virar a esquerda*/
+	/** M√©todo p√∫blico para virar a esquerda*/
 	public void virarEsquerda(){
 		if(getCarroLigado()){/** Condicional para garantir que o carro esteja ligado*/
 			//System.out.println("Espero que sua seta esteja ligada, virando para esquerda");
-			JOptionPane.showMessageDialog(null, "Espero que sua seta esteja ligada, virando para esquerda");/** Mensagem de sucesso na condiÁ„o*/
-			setCarroAndando(true);/** Passando a informaÁ„o para o mÈtodo set do carroAndando*/
+			JOptionPane.showMessageDialog(null, "Espero que sua seta esteja ligada, virando para esquerda");/** Mensagem de sucesso na condi√ß√£o*/
+			setCarroAndando(true);/** Passando a informa√ß√£o para o m√©todo set do carroAndando*/
 		}
 	}
 	
-	/** MÈtodo set privado do Carro Andando para alterar o atributo carroAndando*/
+	/** M√©todo set privado do Carro Andando para alterar o atributo carroAndando
+	 * 
+	 * @param boolean cond
+	 */
 	private void setCarroAndando(boolean cond) { 
 		CarroAndando=cond; /** Alterando o atributo*/
 	}
 	
-	/** MÈtodo get protegido do Carro Andando para retornar o atributo carroAndando*/
+	/** M√©todo get protegido do Carro Andando para retornar o atributo carroAndando
+	 * @return boolean CarroAndando
+	 */
 	protected boolean getCarroAndando(){ 
 		return CarroAndando; /** Retornando o atributo*/
 	}
 	
-	/** MÈtodo set privado do Carro Ligado para alterar o atributo carroLigado*/
+	/** M√©todo set privado do Carro Ligado para alterar o atributo carroLigado
+	 * 
+	 * @param boolean cond
+	 */
 	private void setCarroLigado(boolean cond) {
 		CarroLigado = cond; /** Alterando o atributo*/
 	}
 	
-	/** MÈtodo get protegido do Carro Ligado para retornar o atributo carroLigado*/
+	/** M√©todo get protegido do Carro Ligado para retornar o atributo carroLigado
+	 * 
+	 * @return boolean CarroLigado
+	 */
 	protected boolean getCarroLigado(){
 		return CarroLigado; /** Retornando o atributo*/
 	}
