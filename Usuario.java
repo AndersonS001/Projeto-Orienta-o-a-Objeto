@@ -1,49 +1,64 @@
 import javax.swing.JOptionPane;
-
-
+/**
+ * 
+ * @author unifasouza
+ * Classe que cria um usuário para controlar o veículo.
+ */
 public class Usuario extends CriaVeiculo{
+	/**Atributos usuários*/
 	private String Nome;
 	private int Idade;
 	private boolean User;
-	
+	 
+	/**Construtor da classe*/
 	public Usuario(String nome, int idade){
+		/**Condicional de criação*/
 		if(nome == ""){
-			setNome("Padrão");
-			setIdade(18);
-			setUser(true);
-		}else if(idade == 0){
-			setNome(nome);
-			setIdade(18);
-			setUser(true);
+			setNome("Padrão"); /** Alterando o atributo via método set*/
+			setIdade(18);/** Alterando o atributo via método set*/
+			setUser(true);/** Alterando o atributo via método set*/
+		}else if(idade == 0){ /**Else*/
+			setNome(nome); /** Alterando o atributo via método set*/
+			setIdade(18);/** Alterando o atributo via método set*/
+			setUser(true);/** Alterando o atributo via método set*/
 		}else {
-			setIdade(idade);
-			setUser(false);
+			setIdade(idade);/** Alterando o atributo via método set*/
+			setUser(false);/** Alterando o atributo via método set*/
 		}
-	} 
-	
-	private void setNome(String nome){
-		this.Nome =  nome;
 	}
+	
+	 /**Método set para Nome*/
+	private void setNome(String nome){
+		this.Nome =  nome; /** Alterando o atributo*/
+	}
+	
+	/**Método set para Idade*/
 	private void setIdade(int idade){
 		if(idade >= 18)
-			this.Idade =  idade;
+			this.Idade =  idade; /** Alterando o atributo*/
 		else
-			//System.out.println("Você não possui 18 anos para poder dirigir");
-			JOptionPane.showMessageDialog(null, "Desculpe, mas você não possui 18 anos para poder dirigir", null, JOptionPane.ERROR_MESSAGE);
-		
+			JOptionPane.showMessageDialog(null, 
+					"Desculpe, mas você não possui 18 anos para poder dirigir", 
+					null, JOptionPane.ERROR_MESSAGE); /**Retorno erro*/
 	}
 	
+	/**Método set para Usuário*/
 	private void setUser(boolean x) {
-		this.User = x;
+		this.User = x; /** Alterando o atributo*/
 	}
 	
+	/**Método get para o Nome*/
 	public String getNome(){
-		return this.Nome;
+		return this.Nome;  /**@return Retornando o atributo*/
 	}
+
+	/**Método get para Idade*/
 	public int getIdade(){
-		return this.Idade;
+		return this.Idade; /**@return Retornando o atributo*/
 	}
+	
+	/**Método get para o Usuario*/
 	public boolean getUser() {
-		return User;
+		return User; /**@return Retornando o atributo*/
 	}
 }
