@@ -1,8 +1,8 @@
 /**
  * Blibliotecas importadas para classe
  */
+import javax.swing.JOptionPane;
 
-import javax.swing.*;
 
 /**
  * 
@@ -11,10 +11,7 @@ import javax.swing.*;
  */
 
 public class Veiculo { 
-	private String Cor; /** Atributo da classe */
-	private String Ano; /** Atributo da classe */
-	private String Modelo; /** Atributo da classe */
-	private String Tipo; /** Atributo da classe */
+	/** Atributo da classe */
 	private boolean CarroLigado=false; /** Atributo da classe */
 	private boolean CarroAndando=false; /** Atributo da classe */
 	
@@ -22,11 +19,7 @@ public class Veiculo {
 	/**
 	 * Método construtor da classe que inicia os atributos do carro como padrões.
 	 */
-	public Veiculo(){ 
-		Cor = "Vermelho"; /** Definição padrão de atributos*/
-		Ano = "2017"; /** Definição padrão de atributos*/
-		Modelo = "Ferrari"; /** Definição padrão de atributos*/
-		Tipo = "Passeio"; /** Definição padrão de atributos*/
+	public Veiculo(){
 	}
 	
 	/** Método público para ligar o carro 
