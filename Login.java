@@ -10,6 +10,8 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -25,16 +27,16 @@ public class Login {
 	/**
 	 * Launch the application.
 	 */
-
-	
-	public void Array() {
-		v = u.getArray();
-	}
-	
 	public Login() {
-		Array();
+		try {
+			v = Arquivo.getUser();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
+
 	/**
 	 * Create the frame.
 	 * @wbp.parser.entryPoint
@@ -74,8 +76,16 @@ public class Login {
 		contentPane.add(lblQuemVoc);
 		
 		JButton btnEntrar = new JButton("Entrar");
+		
+		if(v.size() == 0) 
+			btnEntrar.setVisible(false);
+		
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//comboBox.getSelectedItem().toString();
+				PainelDeControle p =  new PainelDeControle();
+				p.setVisible(true);
+				x.dispose();
 			}
 		});
 		btnEntrar.setBounds(20, 115, 89, 23);
