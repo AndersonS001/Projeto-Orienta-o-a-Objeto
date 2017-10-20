@@ -11,8 +11,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JMenuBar;
 /**
@@ -26,34 +25,32 @@ public class Usuario extends CriaVeiculo{
 	private int Idade;
 	private boolean User;
 	private JTextField txtGetNome;
-	private static ArrayList<String> user = new ArrayList<String>();
 	
 	
-	
-	
-	
-	public int Size() {
-		return user.size();
-	}
-
-	 
 	/**Construtor da classe
 	 * @param String nome
 	 * @param int idade
+	 * @throws IOException 
 	 */
 	
-	public Usuario(String nome, int idade) {
+	public Usuario(String nome, int idade) throws IOException {
 		CriaUsuario(nome, idade);
 	}
 	
 	public Usuario() {}
 	
-	public void CriaUsuario(String nome, int idade){	
+	public void CriaUsuario(String nome, int idade) throws IOException{	
+		
+		boolean teste = Arquivo.UsuarioNExiste(nome);
+		//boolean teste = true;
+		
 		/**Condicional de criação*/
-		if(nome.equals("") && idade == 0){
+		if(nome.equals("") && idade == 0 && teste){
 			setNome("Padrão"); /** Alterando o atributo via método set*/
 			setIdade(18);/** Alterando o atributo via método set*/
 			setUser(true);/** Alterando o atributo via método set*/
+		}else if(!teste) {
+			JOptionPane.showMessageDialog(null, "Usuário já existente!","ERRO",JOptionPane.ERROR_MESSAGE);
 		}else if(idade == 0){ /**Else*/
 			setNome(nome); /** Alterando o atributo via método set*/
 			setIdade(18);/** Alterando o atributo via método set*/
@@ -64,23 +61,15 @@ public class Usuario extends CriaVeiculo{
 		}
 	}
 	
-	public static void Salvar(String nome) {
-		user.add(nome);
+	public static void Salvar(String nome) {	
+		try {
+			Arquivo.CadastraUsuario(nome);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-	
-	public void Nomes() {
-		
-        Arrays.toString( user.toArray() );
 
-	}
-	
-	public ArrayList<String> getArray(){
-		return user;
-	}
-	
-	public void MostraNome() {
-		Nomes();
-	}
 	
 	 /**Método set para Nome
 	  * @param String nome - Nome do usuário
@@ -131,9 +120,6 @@ public class Usuario extends CriaVeiculo{
 	}
 		
 	
-	
-	
-	
 	/**Inicio tela*/
 	
 	/**
@@ -176,9 +162,19 @@ public class Usuario extends CriaVeiculo{
 		btnEnviar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(rdnSim.isSelected())
-					CriaUsuario(txtGetNome.getText().toString(),0);
+					try {
+						CriaUsuario(txtGetNome.getText().toString(),0);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				else
-					CriaUsuario(txtGetNome.getText().toString(),1);
+					try {
+						CriaUsuario(txtGetNome.getText().toString(),1);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				
 				x.dispose();
 			}
