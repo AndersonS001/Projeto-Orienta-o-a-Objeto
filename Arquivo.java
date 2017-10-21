@@ -6,10 +6,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 	
-public class Arquivo {
+public abstract class Arquivo {
 	
 		static String pathUsuarios = "Dados/Usuarios.txt";
 		static String pathConfiguracoes = "Dados/Config.txt";
+		private static ArrayList<String> user = new ArrayList<>();
 		
 		private static void ArquivoExiste(String path) throws IOException {
 			File arquivo = new File(path);
@@ -56,18 +57,31 @@ public class Arquivo {
 	    }
 	    
 	    
-	    public static void CadastraUsuario(String texto) throws IOException {
+	    private static void Manipulacao(ArrayList<String> userN) throws IOException {
 	    	ArquivoExiste(pathUsuarios);
 	    	
-	        BufferedWriter buffWrite = new BufferedWriter(new FileWriter(pathUsuarios,true));
+	        BufferedWriter buffWrite = new BufferedWriter(new FileWriter(pathUsuarios));
 	        
-	        buffWrite.write(texto);
-	        buffWrite.newLine();
-	        buffWrite.flush();
+	        for(String s : userN) {
+	        	buffWrite.write(s);
+		        buffWrite.newLine();	
+		        buffWrite.flush();
+	        }
+	       
 	        buffWrite.close();
 	    }
 	    
+	    public static void CadastraUsuario(String texto) throws IOException {
+	    	user = getUser();
+	    	user.add(texto);
+	    	Manipulacao(user);
+	    	user.clear();
+	    }
 	    
-	    
-	    
+	    public static void RemoveUsuario(String nome) throws IOException {
+	  	   	user = getUser();
+	    	user.remove(nome);
+	    	Manipulacao(user); 
+	    	user.clear();
+	    }
 	}
