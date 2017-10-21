@@ -21,12 +21,11 @@ public abstract class Arquivo {
 		
 	    public static ArrayList<String> getUser() throws IOException {
 	    	ArquivoExiste(pathUsuarios);
+	    	user.clear();
+	    	
 	        BufferedReader buffRead = new BufferedReader(new FileReader(pathUsuarios));
-			ArrayList<String> user = new ArrayList<>();
-
-	        String linha = "";
 	        while (true) {
-	        	linha = buffRead.readLine();
+	        	String  linha = buffRead.readLine();
 	            if (linha != null) {
 	            	user.add(linha);
 	            } else
@@ -38,7 +37,6 @@ public abstract class Arquivo {
 	    }
 	    
 	    public static boolean UsuarioNExiste(String nome) throws IOException {
-	    	user.clear();
 	    	user = getUser();
 	    	
 	    	for(String s : user) {
@@ -67,13 +65,11 @@ public abstract class Arquivo {
 	    	user = getUser();
 	    	user.add(texto);
 	    	Manipulacao(user);
-	    	user.clear();
 	    }
 	    
 	    public static void RemoveUsuario(String nome) throws IOException {
-	  	   	user = getUser();
+	    	user = getUser();
 	    	user.remove(nome);
 	    	Manipulacao(user); 
-	    	user.clear();
 	    }
 	}
