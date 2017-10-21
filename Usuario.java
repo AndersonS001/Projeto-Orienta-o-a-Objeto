@@ -41,8 +41,10 @@ public class Usuario extends CriaVeiculo{
 	
 	public void CriaUsuario(String nome, int idade) throws IOException{	
 		
+		if(nome.equals(""))
+			nome = "Padrão";
+		
 		boolean teste = Arquivo.UsuarioNExiste(nome);
-		//boolean teste = true;
 		
 		/**Condicional de criação*/
 		if(nome.equals("") && idade == 0 && teste){
