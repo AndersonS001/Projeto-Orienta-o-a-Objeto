@@ -5,6 +5,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+
 import javax.swing.JMenu;
 
 public class Main {
@@ -64,11 +66,27 @@ public class Main {
 		mntmNewMenuItem_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				Login frame = new Login();
+				LoginUsuario frame = new LoginUsuario();
 				frame.Tela();
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_1);
+		
+		JMenuItem mntmRemoverUsurio = new JMenuItem("Remover Usu\u00E1rio");
+		mntmRemoverUsurio.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				RemoverUsuario r;
+				try {
+					r = new RemoverUsuario();
+					r.setVisible(true);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		mnNewMenu.add(mntmRemoverUsurio);
 		
 		JMenu mnNewMenu_2 = new JMenu("Sair");
 		mnNewMenu_2.addMouseListener(new MouseAdapter() {
