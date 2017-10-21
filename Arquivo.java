@@ -15,9 +15,8 @@ public abstract class Arquivo {
 		private static void ArquivoExiste(String path) throws IOException {
 			File arquivo = new File(path);
 			
-			if(!arquivo.exists()) {
+			if(!arquivo.exists()) 
 				arquivo.createNewFile();
-			}
 		}
 		
 	    public static ArrayList<String> getUser() throws IOException {
@@ -39,23 +38,16 @@ public abstract class Arquivo {
 	    }
 	    
 	    public static boolean UsuarioNExiste(String nome) throws IOException {
-	    	ArquivoExiste(pathUsuarios);	
-	        BufferedReader buffRead = new BufferedReader(new FileReader(pathUsuarios));
-			
-	        String linha = "";
-	        while (true) {
-	        	linha = buffRead.readLine();
-	            if (nome.equals(linha)) {
-	    	        buffRead.close();
-	            	return false;
-	            } else
-	                break;
-	        }
-	        
-	        buffRead.close();
-			return true;
+	    	user.clear();
+	    	user = getUser();
+	    	
+	    	for(String s : user) {
+	    		if(nome.equals(s))
+	    			return false;
+	    	}
+	    	
+	    	return true;
 	    }
-	    
 	    
 	    private static void Manipulacao(ArrayList<String> userN) throws IOException {
 	    	ArquivoExiste(pathUsuarios);
