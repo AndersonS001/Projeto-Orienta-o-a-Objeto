@@ -3,6 +3,13 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
+import controlers.Arquivo;
+import view.LoginUsuario;
+import view.RemoverUsuario;
+//import classes.Usuario;
+import view.UserInterface;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -11,17 +18,17 @@ import javax.swing.JMenu;
 
 public class Main {
 
-	private JFrame frame;
+	private JFrame frmPrincipal;
 
 	/**
-	 * Launch the application.
+	 * Inicia a aplicação
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					Main window = new Main();
-					window.frame.setVisible(true);
+					window.frmPrincipal.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -30,34 +37,34 @@ public class Main {
 	}
 
 	/**
-	 * Create the application.
+	 * Cria a aplicação.
 	 */
 	public Main() {
 		initialize();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Inicializa os conteudos da tela
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmPrincipal = new JFrame();
+		frmPrincipal.setTitle("Principal");
+		frmPrincipal.setBounds(100, 100, 450, 300);
+		frmPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmPrincipal.getContentPane().setLayout(null);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 434, 19);
-		frame.getContentPane().add(menuBar);
+		frmPrincipal.getContentPane().add(menuBar);
 		
 		JMenu mnNewMenu = new JMenu("Usu\u00E1rio");
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Novo Usu\u00E1rio");
 		mntmNewMenuItem.addMouseListener(new MouseAdapter() {
-			@Override
+			
 			public void mousePressed(MouseEvent e) {
-				Usuario u = new Usuario();
-				u.Tela();
+				new UserInterface();
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem);
@@ -66,8 +73,19 @@ public class Main {
 		mntmNewMenuItem_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				LoginUsuario frame = new LoginUsuario();
-				frame.Tela();
+				try {
+					boolean usuario = Arquivo.Verificar(false);
+				
+					if(usuario) {
+						LoginUsuario frame = new LoginUsuario();
+						frame.Tela();
+					}
+					else
+						JOptionPane.showMessageDialog(null, "Não há nenhum usuário cadastrado.");
+				}catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_1);
@@ -76,13 +94,23 @@ public class Main {
 		mntmRemoverUsurio.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				RemoverUsuario r;
+				boolean usuario;
 				try {
-					r = new RemoverUsuario();
-					r.setVisible(true);
-				} catch (IOException e) {
+					usuario = Arquivo.Verificar(false);
+				
+					if(usuario) {
+						try {
+							new RemoverUsuario();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					else
+						JOptionPane.showMessageDialog(null, "Não há nenhum usuário cadastrado.");
+				} catch (IOException e1) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					e1.printStackTrace();
 				}
 			}
 		});
